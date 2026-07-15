@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relay — Language Translator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">⇄</span>
+    <span class="brand-name">Relay</span>
+  </div>
+  <div class="topbar-meta">
+    <span class="badge">CodeAlpha · AI Internship</span>
+    <span class="badge-task"> Language Translation Tool</span>
+  </div>
+</header>
+
+<main class="stage">
+
+  <section class="translator" aria-label="Translator">
+
+    <!-- SOURCE PANEL -->
+    <div class="panel panel-source">
+      <div class="panel-head">
+        <label for="sourceLang" class="panel-label">From</label>
+        <select id="sourceLang" class="lang-select"></select>
+        <span class="panel-tag">IN</span>
+      </div>
+      <textarea id="sourceText" class="panel-text" placeholder="Type or paste text to translate…" maxlength="800"></textarea>
+      <div class="panel-foot">
+        <button id="micBtn" class="icon-btn" title="Speak to translate — voice input" aria-label="Voice input">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.93V21h2v-2.07A7 7 0 0 0 19 12h-2Z"/></svg>
+        </button>
+        <span id="charCount" class="char-count">0 / 800</span>
+      </div>
+    </div>
+
+    <!-- SEAM / SWAP -->
+    <div class="seam">
+      <button id="swapBtn" class="swap-btn" title="Swap languages" aria-label="Swap languages">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M7 7h11l-3-3 1.4-1.4L21.8 8l-5.4 5.4L15 12l3-3H7V7Zm10 10H6l3 3-1.4 1.4L2.2 16l5.4-5.4L9 12l-3 3h11v2Z"/></svg>
+      </button>
+    </div>
+
+    <!-- TARGET PANEL -->
+    <div class="panel panel-target">
+      <div class="panel-head">
+        <span class="panel-tag">OUT</span>
+        <select id="targetLang" class="lang-select"></select>
+        <label for="targetLang" class="panel-label panel-label-right">To</label>
+      </div>
+      <div id="targetText" class="panel-text panel-output placeholder" aria-live="polite">Translation will appear here.</div>
+      <div class="panel-foot panel-foot-right">
+        <span id="statusText" class="status-text"></span>
+        <button id="speakBtn" class="icon-btn" title="Listen to translation" aria-label="Speak translation">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M3 10v4h4l5 5V5L7 10H3Zm13.5 2a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 16.5 12Zm-2.5-8.77v2.06A6.5 6.5 0 0 1 19 12a6.5 6.5 0 0 1-5 6.71v2.06A8.5 8.5 0 0 0 21 12a8.5 8.5 0 0 0-7-8.77Z"/></svg>
+        </button>
+        <button id="copyBtn" class="icon-btn" title="Copy translation" aria-label="Copy translation">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H8V7h11v14Z"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="action-row">
+    <button id="translateBtn" class="translate-btn">
+      <span>Translate</span>
+      <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M4 12h14m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <section class="history" aria-label="Recent translations">
+    <div class="history-head">
+      <h2>Recent</h2>
+      <button id="clearHistory" class="text-btn">Clear</button>
+    </div>
+    <ul id="historyList" class="history-list">
+      <li class="history-empty">Nothing translated yet — your last few conversions will show up here.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Built for CodeAlpha Task 1 · Translation powered by the MyMemory Translation API · Voice output via the Web Speech API</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
