@@ -116,7 +116,7 @@ async function translate() {
                 headers: {
                     "Content-Type": "application/json",
                     "x-rapidapi-host": "google-translate113.p.rapidapi.com",
-                    "x-rapidapi-key": "15325f9b97msh56aac9b6bf044d5p1bca5fjsn4c97f47e5809"
+                    "x-rapidapi-key": "YOUR-API-KEY"
                 },
                 body: JSON.stringify({
                     from: sourceLang.value || "auto",
